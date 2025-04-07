@@ -1,0 +1,30 @@
+{
+  "name": "purrfection",
+  "version": "1.0.0",
+  "description": "BBGG: <br> Base de Gatos <br> ![alt text](https://i.imgflip.com/3u04h5.jpg?a484368)",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanfermen/purrfection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanfermen/purrfection/issues"
+  },
+  "homepage": "https://github.com/sanfermen/purrfection#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
