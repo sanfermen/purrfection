@@ -7,14 +7,20 @@
 Cuelga tu anuncio y encuentra purrfesionales que se adapten a tus peticiones.
 
 
+## miembros
+- [Dalila Cabrera](https://github.com/crdalila)
+- [Sandra Fernández](https://github.com/sanfermen)
+- [Iker del Hierro](https://github.com/ikerdelfe)
+- [Cecilia Scaroni](https://github.com/Ceci222/)
 
-Descripción del purrfection. Base de gatos.
-
+Imagen descriptiva del equipo técnico durante este proyecto:
 ![alt text](https://i.imgflip.com/3u04h5.jpg?a484368)
 
 
 ## .ENV
-- Dentro del archivo .env, pon los datos
+Para que el proyecto sea funcional en tu ordenador, completa los datos solicitados en el **.env.example** y elimina el .example. ¡Ahora debería funcionar!
+Datos en el interior del **.env**:
+```js
 DB_HOST=
 DB_PORT=
 DB_USER=
@@ -22,5 +28,4 @@ DB_PASSWORD=
 DB_NAME=
 
 APP_PORT=
-
-Y quitarle el .example para poder usarlo con normalidad
+```
