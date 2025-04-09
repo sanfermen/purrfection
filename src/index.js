@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import router from "./routes/router.js";
+//import router from "./routes/router.js";
 
 // cargar variables de entorno
 dotenv.config();
@@ -18,7 +18,7 @@ app.set('view engine', 'pug');
 
 
 // configurar rutas
-app.use("/",router);
+//app.use("/",router);
 
 
 // Iniciar servidor
