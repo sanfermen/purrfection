@@ -34,17 +34,17 @@ INSERT INTO `cat` (`name`, `age`, `neuter`, `comments`, `special_needs`, `breed`
 -- -----------------------------------------------------
 -- Insertar registros en la tabla `appointment` (citas)
 -- -----------------------------------------------------
-INSERT INTO `appointment` (`start_date`, `end_date`, `description`, `user_id`) VALUES
-('2025-04-10', '2025-04-12', 'Cuidado de fin de semana para Milo', 2),
-('2025-04-15', '2025-04-18', 'Nala necesita medicación', 4),
-('2025-05-01', '2025-05-05', 'Se requiere cuidador durante vacaciones', 6),
-('2025-05-10', '2025-05-11', 'Chequeo para Oscar', 2),
-('2025-06-01', '2025-06-10', 'Viaje a Europa', 8),
-('2025-06-15', '2025-06-20', 'Cuidado temporal para Bella', 4),
-('2025-07-01', '2025-07-03', 'Simba necesita juego y atención', 6),
-('2025-07-15', '2025-07-16', 'Alergias de Zoe', 8),
-('2025-08-01', '2025-08-10', 'Cuidado vacacional para Leo', 6),
-('2025-08-20', '2025-08-22', 'Plan de medicación para Cleo', 10);
+INSERT INTO `appointment` (`start_date`, `end_date`, `description`, `user_id`, `creation_date`) VALUES
+('2025-04-10', '2025-04-12', 'Cuidado de fin de semana para Milo', 2, '2025-04-05'),
+('2025-04-15', '2025-04-18', 'Nala necesita medicación', 4, '2025-04-05'),
+('2025-05-01', '2025-05-05', 'Se requiere cuidador durante vacaciones', 6, '2025-04-06'),
+('2025-05-10', '2025-05-11', 'Chequeo para Oscar', 2, '2025-04-06'),
+('2025-06-01', '2025-06-10', 'Viaje a Europa', 8, '2025-04-07'),
+('2025-06-15', '2025-06-20', 'Cuidado temporal para Bella', 4, '2025-04-08'),
+('2025-07-01', '2025-07-03', 'Simba necesita juego y atención', 6, '2025-04-08'),
+('2025-07-15', '2025-07-16', 'Alergias de Zoe', 8, '2025-04-09'),
+('2025-08-01', '2025-08-10', 'Cuidado vacacional para Leo', 6, '2025-04-10'),
+('2025-08-20', '2025-08-22', 'Plan de medicación para Cleo', 10, '2025-04-10');
 
 -- -----------------------------------------------------
 -- Insertar registros en la tabla `cat_has_appointment` (asociación entre gatos y citas)
