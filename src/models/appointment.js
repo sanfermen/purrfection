@@ -19,10 +19,14 @@ const Appointment = connection.define("appointment", {
     },
     description: {
         type: DataTypes.STRING(255),
+        allowNull: false,
     },
     user_id:{
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false
+    },
+    creation_date:{
+        type: DataTypes.DATE,
     }
 })
 
