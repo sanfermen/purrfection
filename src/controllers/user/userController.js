@@ -1,12 +1,8 @@
 import User from "../../models/user.js";
 import Cat from "../../models/cat.js";
 import Appointment from "../../models/appointment.js";
-
-async function getAll() {
-        const users = await User.findAll();
-                //aquí tiene: { include:StandCategory } dentro del findAll
-        return users;
-}
+import { UserNameNotProvided, UserEmailNotProvided, UserPasswordNotProvided, UserRoleIncorrect 
+  } from "../../utils/errors.js";
 
 async function getByID() {
         const user = await User.findByPk(id, {
@@ -15,24 +11,52 @@ async function getByID() {
         return user;
 }
 
-async function create(data) {
+async function create(data) {       //Esto lo hizo el francés :(
         data.creation_date = new Date();
-        const response = await User.create(data)
-
-        return response;
-}
+  
+        if (!data.name) {
+            throw new UserNameNotProvided();
+          }
+          
+          if (!data.email) {
+            throw new UserEmailNotProvided();
+          }
+          
+          if (!data.password) {
+            throw new UserPasswordNotProvided();
+          }
+          
+          data.role = data.role ? data.role.toLowerCase() : "cliente";
+          const validRoles = ["cliente", "purrfesional"];
+          
+          if (!validRoles.includes(data.role)) {
+            throw new UserRoleIncorrect();
+          }
+          
+          const response = await User.create(data);
+          return response;
+        }
 
 async function edit(id,data) {
-        const result = await user.update(
+    if (data.role) {
+        data.role = data.role.toLowerCase();
+        const validRoles = ["cliente", "purrfesional"];
+        
+        if (!validRoles.includes(data.role)) {
+          throw new UserRoleIncorrect();
+        }
+      }
+      
+      const result = await User.update(
         data,
         {
-            where: {
-                user_id:id
-           }
+          where: {
+            user_id: id
+          }
         }
-        );
-        return result;
-}
+      );
+      return result;
+    }
 
 async function remove(id) {
         const response = await User.destroy({
@@ -44,7 +68,6 @@ async function remove(id) {
 }
 
 export {
-    getAll,
     getByID,
     create,
     edit,
@@ -52,7 +75,6 @@ export {
 }
 
 export default {
-    getAll,
     getByID,
     create,
     edit,

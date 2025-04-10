@@ -1,50 +1,80 @@
 import userController from "./userController.js";
 
-async function getAll(req, res) {
-        const users = await userController.getAll();
-        const role = req.session.user?.role;
-        res.render("user/list", {users,role});  //route
-}
-
 async function getByID(req, res) {
-        const id = req.params.id;
-        const user = await userController.getByID(id);
-        res.render("user/show", {user}); //route
+        try {
+                const id = req.params.id;
+                const user = await userController.getByID(id);
+                res.render("user/show", {user});
+        } catch (error) {
+            console.error(error);
+            res.render("layout", { error: "Error del servidor interno" });
+        }
 }
 
 async function createForm(req, res) {
-        // no categorias   
-        res.render("user/create");   //route
+        try { 
+                const error = req.query.error;
+                res.render("user/create");
+        } catch (error) {
+                console.error(error);
+                res.render("layout", { error: "Error del servidor interno" });
+        }
 }
 
 async function create(req, res) {
-        const response = await userController.create(req.body);
-        res.redirect("/user");  //route
+        try {
+                const response = await userController.create(req.body);
+                res.redirect("/user");
+        } catch (error) {
+                console.error(error);
+        if (error.statusCode) {
+                res.redirect("/stand/new?error=" + error.message)
+        } else {
+                res.redirect("/stand/new?error=Internal+server+error")
+        }
+        }
 }
 
 async function editForm(req, res) {
-        const id = req.params.id;
-        const user = await userController.getByID(id);
-        if (!user) {
-            return res.redirect("/user");
+        try {
+                const id = req.params.id;
+                const user = await userController.getByID(id);
+                if (!user) {
+                return res.redirect("/user");
+                }
+                res.render("user/edit", { user });
+        } catch (error) {
+                console.error(error);
+                res.render("layout", { error: "Error del servidor interno" });
+                }
         }
-        res.render("user/edit", { user }); //route
-}
 
 async function edit(req, res) {
         const id = req.params.id;
-        const result = await userController.edit(id,req.body);
-        res.redirect("/users/" + id);  //route
+        try {
+                const result = await userController.edit(id,req.body);
+                res.redirect("/users/" + id);
+        } catch(error){
+                console.error(error);
+                if (error.statusCode) {
+                res.redirect(`/stand/${id}/edit?error=` + error.message)
+        } else {
+                res.render("layout", { error: "Error del servidor interno" });
+        }
+        }
 }
 
 async function remove(req, res) {
-        const id = req.params.id;
-        const response = await userController.remove(id);
-        res.redirect("/users");  //route
+        try {
+                const id = req.params.id;
+                const response = await userController.remove(id);
+                res.redirect("/users");
+        }catch(error){
+                res.render("layout", { error: "Error del servidor interno" }); 
+        }
 }
 
 export {
-    getAll,
     getByID,
     createForm,
     create,
@@ -54,7 +84,6 @@ export {
 }
 
 export default {
-    getAll,
     getByID,
     createForm,
     create,
