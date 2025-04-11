@@ -1,7 +1,7 @@
 import { Router } from "express";
 import standRouter from "./standRouter.js";
 import productRouter from "./productRouter.js";
-import authRouter from "./authRouter.js";
+import authRouter from "./authViewRouter.js";
 
 const router = Router();
 

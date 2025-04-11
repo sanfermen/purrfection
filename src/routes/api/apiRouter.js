@@ -2,7 +2,7 @@ import { Router } from "express";
 import catRouter from "./catRouterRouter.js";
 import userRouter from "./userRouter.js";
 import appointmentRouter from "./appointmentRouter.js";
-import authRouter from "./authRouter.js";
+import authRouter from "./authAPIRouter.js";
 
 const router = Router();
 
