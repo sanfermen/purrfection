@@ -1,0 +1,11 @@
+extends ../layout
+
+block content 
+	form(action="/login", method="post")
+
+		label(for="email") Email
+		input(type="email" name="email" id="email")
+		label(for="password") Contraseña 
+		input(type="password" name="password" id="password")
+
+		button Login

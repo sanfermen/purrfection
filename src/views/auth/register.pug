@@ -1,0 +1,16 @@
+extends ../layout 
+
+block content 
+
+	form(action="/register", method="post")
+		label(for="name") Nombre
+		input(type="text" name="name" id="name")
+		label(for="email") Email 
+		input(type="email" name="email" id="email")
+		label(for="password") Contraseña 
+		input(type="password" name="password" id="password")
+		label(for="role") Rol
+		select#role(name="role")
+			option(value="client") Cliente
+			option(value="caretaker") Purrfesional
+		button Registrarme

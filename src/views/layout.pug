@@ -1,0 +1,11 @@
+html 
+	head 
+		title Purrfection 
+	body 
+		include navbar.png 
+		if error 
+			p(class="error")= error 
+		if message 
+			p(class="message")= message 
+		block content 
+		//-block sirve para definir un espacio que puede ser llenado o sobrescrito por otras plantillas que extiendan esta plantilla base. Es un mecanismo para crear plantillas reutilizables.
