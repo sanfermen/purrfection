@@ -23,7 +23,8 @@ const Cat = connection.define("cat", {
         defaultValue: false,
     },
     comments: {
-        type: DataTypes.STRING(255)
+        type: DataTypes.STRING(255),
+        allowNull: false
     },
     special_needs: {
         type: DataTypes.BOOLEAN,
@@ -32,6 +33,7 @@ const Cat = connection.define("cat", {
     },
     breed: {
         type: DataTypes.STRING(45),
+        allowNull: false
     },
     image: {
         type: DataTypes.STRING(300),
@@ -41,5 +43,6 @@ const Cat = connection.define("cat", {
         allowNull: false
     }
 })
+
 
 export default Cat;
