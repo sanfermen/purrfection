@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection from "../config/sequelize.js";
-import Cat from "../cat.js"
-import Appointment from "../appointment.js"
+import Cat from "./cat.js"
+import Appointment from "./appointment.js"
 
 // Modelo de la tabla User
 const User = connection.define("user", {

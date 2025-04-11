@@ -65,13 +65,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `purrfection`.`appointment` ;
 
 CREATE TABLE IF NOT EXISTS `purrfection`.`appointment` (
-  `appoinment_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `appointment_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `start_date` DATE NOT NULL,
   `end_date` DATE NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   `creation_date` DATE NULL,
-  PRIMARY KEY (`appoinment_id`),
+  PRIMARY KEY (`appointment_id`),
   INDEX `fk_appointment_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_appointment_user1`
     FOREIGN KEY (`user_id`)
@@ -87,13 +87,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `purrfection`.`cat_has_appointment` ;
 
 CREATE TABLE IF NOT EXISTS `purrfection`.`cat_has_appointment` (
-  `appoinment_id` INT UNSIGNED NOT NULL,
+  `appointment_id` INT UNSIGNED NOT NULL,
   `cat_id` INT UNSIGNED NOT NULL,
-  INDEX `fk_cat_has_appointment_appointment1_idx` (`appoinment_id` ASC) VISIBLE,
+  INDEX `fk_cat_has_appointment_appointment1_idx` (`appointment_id` ASC) VISIBLE,
   INDEX `fk_cat_has_appointment_cat1_idx` (`cat_id` ASC) VISIBLE,
   CONSTRAINT `fk_cat_has_appointment_appointment1`
-    FOREIGN KEY (`appoinment_id`)
-    REFERENCES `purrfection`.`appointment` (`appoinment_id`)
+    FOREIGN KEY (`appointment_id`)
+    REFERENCES `purrfection`.`appointment` (`appointment_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_cat_has_appointment_cat1`
