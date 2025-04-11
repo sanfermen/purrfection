@@ -1,7 +1,7 @@
 extends ../layout 
 block content 
 	h1 Nueva solicitud de cuidados 
-	form(action="/appointment", method="post")
+	form(action="/appointments", method="post")
 		label(for="startDate") Fecha de inicio
 		input(type="date" name="startDate" id="startDate")
 		label(for="endDate") Fecha de fin 

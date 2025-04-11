@@ -1,5 +1,5 @@
 import {Router} from "express";
-import catApiController from "../../catApiController.js";
+import catApiController from "../../controllers/cat/catApiController.js";
 
 const router = Router();
 

@@ -8,7 +8,7 @@ const router = Router();
 
 router.use("/cat",catRouter);
 router.use("/user",userRouter);
-router.use("appointment",appointmentRouter);
+router.use("/appointments",appointmentRouter);
 // router.use("/",authRouter); TODO descomentar
 
 export default router
