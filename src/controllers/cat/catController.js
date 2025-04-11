@@ -29,14 +29,11 @@ async function create(data){ //se pueden pasar los args 1 a 1 o en un objeto dat
         throw new CatAgeNotProvided();
     }
     if (!data.neuter) {
-        throw new CatNeuterInfoNotProvided();
+        throw new CatNeuterNotProvided();
     }
     if (!data.special_needs) {
         throw new CatNeedsNotProvided();
     }
-    if(!user_id){
-        throw new UserIdNotProvided()
-    } 
     const response = await Cat.create(data);
     return response;
 }
