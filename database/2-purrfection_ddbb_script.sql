@@ -49,7 +49,7 @@ INSERT INTO `appointment` (`start_date`, `end_date`, `description`, `user_id`, `
 -- -----------------------------------------------------
 -- Insertar registros en la tabla `cat_has_appointment` (asociación entre gatos y citas)
 -- -----------------------------------------------------
-INSERT INTO `cat_has_appointment` (`appoinment_id`, `cat_id`) VALUES
+INSERT INTO `cat_has_appointment` (`appointment_id`, `cat_id`) VALUES
 (1, 1),   -- Milo en cita 1
 (2, 4),   -- Nala en cita 2
 (3, 2),   -- Luna en cita 3

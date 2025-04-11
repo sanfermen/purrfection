@@ -11,32 +11,6 @@ async function getByID() {
         return user;
 }
 
-async function create(data) {       //Esto lo hizo el francés :(
-        data.creation_date = new Date();
-  
-        if (!data.name) {
-            throw new UserNameNotProvided();
-          }
-          
-          if (!data.email) {
-            throw new UserEmailNotProvided();
-          }
-          
-          if (!data.password) {
-            throw new UserPasswordNotProvided();
-          }
-          
-          data.role = data.role ? data.role.toLowerCase() : "cliente";
-          const validRoles = ["cliente", "purrfesional"];
-          
-          if (!validRoles.includes(data.role)) {
-            throw new UserRoleIncorrect();
-          }
-          
-          const response = await User.create(data);
-          return response;
-        }
-
 async function edit(id,data) {
     if (data.role) {
         data.role = data.role.toLowerCase();
@@ -69,14 +43,12 @@ async function remove(id) {
 
 export {
     getByID,
-    create,
     edit,
     remove,
 }
 
 export default {
     getByID,
-    create,
     edit,
     remove,
 };
