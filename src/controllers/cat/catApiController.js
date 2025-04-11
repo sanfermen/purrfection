@@ -7,7 +7,7 @@ async function getAll(req, res) {
         const cats = await catController.getAll();
         res.json(cats);
     } catch (error) {
-        console.error(error);
+        console.error(error);a
         res.status(500).json({error: "server error"});
     }
 }
@@ -16,7 +16,7 @@ async function getAll(req, res) {
 async function getByID(req,res){
     try {
         const id = req.params.id;
-        const cat = await catController.getById(id); //TODO ver qué pasa ????
+        const cat = await catController.getByID(id); 
         res.json(cat);    
     } catch (error) {
         console.error(error);
