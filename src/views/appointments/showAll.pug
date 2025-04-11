@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+	h1 Todas las solicitudes
+	if appointments.length > 0
+		each appointment in appointments
+			include appointmentCard
+	else 
+		p No hay ninguna solicitud registrada

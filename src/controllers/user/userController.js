@@ -4,7 +4,7 @@ import Appointment from "../../models/appointment.js";
 import { UserNameNotProvided, UserEmailNotProvided, UserPasswordNotProvided, UserRoleIncorrect 
   } from "../../utils/errors.js";
 
-async function getByID() {
+async function getByID(id) {
         const user = await User.findByPk(id, {
             include: [Cat, Appointment]
         });
