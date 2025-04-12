@@ -1,5 +1,5 @@
 import authController from "./authController.js";
-import createToken from "../../utils/token.js"
+import { createToken } from "../../utils/token.js"
 
 //REGISTRARSE
 async function register(req, res) {
