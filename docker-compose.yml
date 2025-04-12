@@ -25,7 +25,8 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       #- mysql_data:/var/lib/mysql # TODO descomentar
-      - ./database:/docker-entrypoint-initdb.d:ro
+      - ./database/scripts:/docker-entrypoint-initdb.d:ro
+      - ./database/conf/mycustom.cnf:/etc/mysql/conf.d/custom.cnf:ro
 
 #volumes:
  # mysql_data: TODO descomentar 
