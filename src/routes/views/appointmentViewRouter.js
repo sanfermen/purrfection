@@ -7,7 +7,7 @@ const router = Router();
 router.get("/",appointmentViewController.getAll)
 
 // crear un appointment
-router.get("/new",appointmentViewController.createForm)
+router.get("/create",appointmentViewController.createForm)
 router.post("/",appointmentViewController.create)
 
 // conseguir appointment por id

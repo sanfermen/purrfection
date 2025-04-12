@@ -1,0 +1,13 @@
+article 
+	h2(class="appointment-card")= appointment.user.name
+	p(class="appointment-card__creation-date")= appointment.creation_date
+	if appointment.cat_has_appointments.length>0
+		h3 Gatos en esta solicitud
+		section(class="appointment-card__images")
+			each cat in appointment.cat_has_appointments
+				article(class="appointment-cat")
+				h4= cat.cat.name
+				img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
+	p(class="appointment-card__start-date")= appointment.start_date 
+	p(class="appointment-card__end-date")= appointment.end_date 
+	p(class="appointment-card__description")= appointment.description

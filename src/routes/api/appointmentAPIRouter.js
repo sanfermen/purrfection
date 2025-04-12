@@ -1,5 +1,5 @@
 import {Router} from "express";
-import appointmentAPIController from "../../controllers/appointments/appointmentAPIController.js";
+import appointmentAPIController from "../../controllers/appointments/appointmentAPIController.js"
 
 const router = Router();
 
