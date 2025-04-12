@@ -25,6 +25,20 @@ class UserRoleIncorrect extends Error {
     }
 }
 
+class UserEmailAlreadyExists extends Error {
+    constructor(){
+        super("Este email ya existe");
+        this.statusCode = 400;
+    }
+}
+
+class UserInvalidCredentials extends Error {
+    constructor(){
+        super("Credenciales erróneas de usuario");
+        this.statusCode = 400;
+    }
+}
+
 
 // ERRORES DE APPOINTMENT
 
@@ -75,8 +89,12 @@ export {
     UserNameNotProvided,
     UserPasswordNotProvided,
     UserRoleIncorrect,
+    UserEmailAlreadyExists,
+    UserInvalidCredentials,
+
     AppointmentDateNotProvided,
     AppointmentDescriptionNotProvided,
+    
     CatAgeNotProvided,
     CatNameNotProvided,
     CatNeedsNotProvided,
