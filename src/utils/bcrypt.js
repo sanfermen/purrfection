@@ -8,7 +8,7 @@ async function hash(password) {
 
 // COMPROBAR SI LA CONTRASEÑA INTRODUCIDA ES CORRECTA
 async function compare(password, hash) { //comprueba lo introducido por el user con el hash
-    const result = await bcrypt.compare(password, hash)
+    const result = await bcrypt.compare(password, hash);
     return result;
 }
 

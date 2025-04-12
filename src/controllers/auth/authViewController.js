@@ -15,13 +15,13 @@ function registerForm(req, res) {
 async function register(req, res) {
     try {
         const newUser = await authController.register(req.body);
-        res.redirect("/login?message=Registered+successfully");
+        res.redirect("/login?message=Registro+correcto");
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
             res.redirect(`/register?error=` + error.message);
         } else {
-            res.redirect(`/register?error=Internal+server+error`);
+            res.redirect(`/register?error=Error+del+servidor+interno`);
         }
     }
 }
@@ -35,13 +35,13 @@ async function login(req, res) {
             id: loggedInUser.user_id,
             role: loggedInUser.role
         }
-        res.redirect("/?message=You+are+logged+in");
+        res.redirect("/?message=Login+correcto");
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
             res.redirect(`/login?error=` + error.message);
         } else {
-            res.redirect(`/login?error=Internal+server+error`);
+            res.redirect(`/login?error=Error+del+servidor+interno`);
         }
     }
 }

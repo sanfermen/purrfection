@@ -5,16 +5,24 @@ USE `purrfection`;
 -- Insertar registros en la tabla `user` (usuarios)
 -- -----------------------------------------------------
 INSERT INTO `user` (`email`, `password`, `role`, `name`) VALUES
-('alice@example.com', 'hashedpwd1', 'client', 'Alice'),
-('bob@example.com', 'hashedpwd2', 'caretaker', 'Bob'),
-('charlie@example.com', 'hashedpwd3', 'client', 'Charlie'),
-('dana@example.com', 'hashedpwd4', 'caretaker', 'Dana'),
-('eric@example.com', 'hashedpwd5', 'client', 'Eric'),
-('fiona@example.com', 'hashedpwd6', 'caretaker', 'Fiona'),
-('george@example.com', 'hashedpwd7', 'client', 'George'),
-('hannah@example.com', 'hashedpwd8', 'caretaker', 'Hannah'),
-('ian@example.com', 'hashedpwd9', 'client', 'Ian'),
-('julia@example.com', 'hashedpwd10', 'caretaker', 'Julia');
+('alice@example.com', '$2b$10$KluWrTyfZ.QC2b2aiCrkSuL01TOtvtZAorunK6TpIY9ZTJPrSPGfy', 'client', 'Alice'),
+('bob@example.com', '$2b$10$Jw9tIBkl5ZoxeFjT2Y7KGeMyKqTr7qppnNYHi1twojwxPmw5Jurzu
+', 'caretaker', 'Bob'),
+('charlie@example.com', '$2b$10$MnhyAAyI/dj7Nl3y5t4w8ucRvbKc.yRdBr/gch5GwL3Gc40Q123SS
+', 'client', 'Charlie'),
+('dana@example.com', '$2b$10$xPwW714RerkKCHDvInEcauK6OPIverLW4AZ/ePxEd3J9NaSNN5WO.
+', 'caretaker', 'Dana'),
+('eric@example.com', '$2b$10$PrEKFa2DD2xxl3xNSbn51eNd.RCwhpx/0Tl8yS6c4aIke1Ia7zvI6
+', 'client', 'Eric'),
+('fiona@example.com', '$2b$10$oSPplUQfXjEmnRfW2V5ZoOdfJNp9LYtXoBOkQNIanp3f6jjK7.8nW
+', 'caretaker', 'Fiona'),
+('george@example.com', '$2b$10$LvJFgQLSe3GgKnDcAQFQGOFMTSfRWtZRbFa.QFlXhc.T55s9p4kvu
+', 'client', 'George'),
+('hannah@example.com', '$2b$10$pXVdhHcq4L9upzHsiEuXMePTh0mqjW/Co9Z1CIY3WS/StxYMQhyXa
+', 'caretaker', 'Hannah'),
+('ian@example.com', '$2b$10$CcBL3iqI7fWf4CCZRwV0u.ZYo7jgB9vjCmKagMi1YOLH5gn38PaCa
+', 'client', 'Ian'),
+('julia@example.com', '$2b$10$pdGoh6vRdGhnTs9zDGh6zOkFfxL/RkgAHNlZcDPEQ1De2gM3MgMq.', 'caretaker', 'Julia');
 
 -- -----------------------------------------------------
 -- Insertar registros en la tabla `cat` (gatos)
