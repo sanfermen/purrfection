@@ -1,13 +1,26 @@
-article 
-	h2(class="appointment-card")= appointment.user.name
-	p(class="appointment-card__creation-date")= appointment.creation_date
-	if appointment.cat_has_appointments.length>0
-		h3 Gatos en esta solicitud
-		section(class="appointment-card__images")
-			each cat in appointment.cat_has_appointments
-				article(class="appointment-cat")
-				h4= cat.cat.name
-				img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
-	p(class="appointment-card__start-date")= appointment.start_date 
-	p(class="appointment-card__end-date")= appointment.end_date 
-	p(class="appointment-card__description")= appointment.description
+article
+	h2(class="appointment-card") ¡#{appointment.user.name} necesita ayuda con su michi!
+	p(class="appointment-card__creation-date") Solicitud creada el #{appointment.creation_date}
+
+	//-esta línea no la lee if appointment.cat_has_appointments.length > 0
+	h3 Los michis que hay que cuidar:
+	section(class="appointment-card__images")
+	each cat in appointment.cat_has_appointments
+		article(class="appointment-cat")
+		h4= cat.cat.name
+		img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
+	section(class="appointment-card__when")
+		h3 ¿Cuándo?
+		p Fecha de inicio: #{appointment.start_date}
+		p Fecha de fin: #{appointment.end_date}
+	section(class="appointment-car__description")
+		p Descripción: #{appointment.description}
+
+	//- Editar y eliminar solo si eres el creador de la cita
+	if user && appointment.user_id == user.id
+		a(href=`/appointments/edit/${appointment.appointment_id}` class="btn-edit") Editar
+		a(href=`/appointments/delete/${appointment.appointment_id}` class="btn-delete") Eliminar
+
+	//- Botón de aceptar solicitud solo si eres un caretaker
+	if user && user.role == "caretaker"
+		button(type="button" class="btn-accept" onclick=`acceptAppointment(${appointment.appointment_id})`) Aceptar solicitud
