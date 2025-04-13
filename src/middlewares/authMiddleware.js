@@ -3,7 +3,7 @@
 function isLoggedInSession(req, res, next) {
     const user = req.session.user;
     if (!user) {
-        return res.redirect("/login?error=You+are+not+logged+in")
+        return res.redirect("/login?error=No+has+iniciado+sesion")
     }
     // lo ideal sería comprobar en base de datos que el usuario existe
     next();
@@ -24,12 +24,12 @@ function isLoggedInSession(req, res, next) {
 async function isCaretaker(req, res, next) {
     const user = req.session.user;
     if (!user) {
-        return res.redirect("/login?error=You+are+not+logged+in");
+        return res.redirect("/login?error=No+has+iniciado+sesion");
     }
     if (user.role === "caretaker") {
         next();
     } else {
-        return res.redirect("/login?error=You+are+not+a+caretaker");
+        return res.redirect("/login?error=No+eres+purrfesional");
     }
 }
 
@@ -37,12 +37,12 @@ async function isCaretaker(req, res, next) {
 async function isClient(req, res, next) {
     const user = req.session.user;
     if (!user) {
-        return res.redirect("/login?error=You+are+not+logged+in");
+        return res.redirect("/login?error=No+has+iniciado+sesion");
     }
     if (user.role === "client") {
         next();
     } else {
-        return res.redirect("/login?error=You+are+not+a+client");
+        return res.redirect("/login?error=No+eres+cliente");
     }
 }
 

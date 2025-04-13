@@ -20,7 +20,7 @@ async function create(data) {
     if (!data.description) {
         throw new AppointmentDescriptionNotProvided();
     }
-    const response = await Appointment.create({data});
+    const response = await Appointment.create(data);
     return response;
 }
 

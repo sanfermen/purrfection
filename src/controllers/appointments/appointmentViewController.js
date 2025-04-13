@@ -8,23 +8,29 @@ import appointmentController from "./appointmentController.js";
 async function createForm(req, res) {
     try {
         const error = req.query.error;
-        res.render("appointments/create", { error }); //route
+        res.render("appointments/create", { error });
     } catch (error) {
         console.error(error);
-        res.render("layout", { error: "Error interno del servidor" }); //route
+        res.render("layout", { error: "Error interno del servidor" });
     }
 }
 
 //crear el appointment con los datos recibidos del formulario
 async function create(req, res) {
     try {
+        const user = req.session.user; //obtener el usuario logueado
+        if (!user || user.role !== "client") {
+            return res.redirect("/appointments?error=No+puedes+crear+una+cita+si+no+eres+cliente");
+        }
+        req.body.user_id = user.id; //añadir el user_id al cuerpo de la solicitud
         const result = await appointmentController.create(req.body);
-        res.redirect("/appointments"); //route
+        res.redirect("/appointments?message=Cita+creada+correctamente");
     } catch (error) {
+        console.error(error);
         if (error.statusCode) {
-            res.redirect("/appointments/new?error=" + error.message) //route
+            res.redirect("/appointments/create?error=" + error.message);
         } else {
-            res.redirect("/appointments/new?error=Internal+server+error") //route
+            res.redirect("/appointments/create?error=Error+del+servidor+interno");
         }
     }
 }
@@ -36,7 +42,7 @@ async function getAll(req, res) {
     try {
         const appointments = await appointmentController.getAll();
         const role = req.session.user?.role;
-        res.render("appointments/showAll", { appointments, role }); //route
+        res.render("appointments/showAll", { appointments, role });
     } catch (error) {
         console.error(error);
         res.render("layout", { error: "Error interno del servidor" });
@@ -48,11 +54,12 @@ async function getByID(req, res) {
     try {
         const id = req.params.id;
         const appointment = await appointmentController.getByID(id);
+        const user = req.session.user; //obtener usuario loggeado
         if (!appointment) {
             res.render("layout", { error: "No existe una solicitud con este id" });
             return;
         }
-        res.render("appointments/show", { appointment }); //route
+        res.render("appointments/show", { appointment, user });
     } catch (error) {
         console.error(error);
         res.render("layout", { error: "Error interno del servidor" });
@@ -67,31 +74,42 @@ async function editForm(req, res) {
     try {
         const id = req.params.id;
         const appointment = await appointmentController.getByID(id);
-        if (!appointment) {
-            res.redirect("/appointment")
+        if (!appointment) return res.redirect("/appointments");
+
+        if (appointment.user_id !== req.session.user?.user_id) {//solo el usuario que la creó puede editar
+            return res.render("layout", { error: "No tienes permiso para editar esta cita" });
         }
-        res.render("appointments/edit", { appointment }); //route
+        res.render("appointments/edit", { appointment });
     } catch (error) {
         console.error(error);
         res.render("layout", { error: "Error interno del servidor" });
     }
 }
 
-// edición de los appointments
 async function edit(req, res) {
     const id = req.params.id;
     try {
+        const appointment = await appointmentController.getByID(id);
+
+        if (!appointment) {
+            return res.redirect("/appointments?error=La+cita+no+existe");
+        }
+        if (appointment.user_id !== req.session.user?.user_id) {//solo el creador puede editar
+            return res.render("layout", { error: "No tienes permiso para editar esta cita" });
+        }
+
         const result = await appointmentController.edit(id, req.body);
-        res.redirect("/appointments/" + id); //route
+        res.redirect("/appointments/" + id);
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
-            res.redirect(`/appointments/${id}/edit?error=` + error.message)
+            res.redirect(`/appointments/${id}/edit?error=` + error.message);
         } else {
             res.render("layout", { error: "Error interno del servidor" });
         }
     }
 }
+
 
 //DELETE
 
@@ -99,12 +117,20 @@ async function edit(req, res) {
 async function remove(req, res) {
     try {
         const id = req.params.id;
+        const appointment = await appointmentController.getByID(id);
+
+        if (!appointment) return res.redirect("/appointments");
+
+        if (appointment.user_id !== req.session.user?.user_id) {//solo el creador puede eliminar
+            return res.render("layout", { error: "No tienes permiso para eliminar esta cita" });
+        }
         const result = await appointmentController.remove(id);
-        res.redirect("/appointment"); //route
+        res.redirect("/appointments");
     } catch (error) {
         res.render("layout", { error: "Error interno del servidor" });
     }
 }
+
 
 //EXPORTS
 

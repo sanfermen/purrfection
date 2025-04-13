@@ -33,8 +33,10 @@ async function login(req, res) {
         const loggedInUser = await authController.login(email, password);
         req.session.user = {
             id: loggedInUser.user_id,
-            role: loggedInUser.role
-        }
+            role: loggedInUser.role,
+            name: loggedInUser.name,
+            email: loggedInUser.email,
+        };
         res.redirect("/?message=Login+correcto");
     } catch (error) {
         console.error(error);
