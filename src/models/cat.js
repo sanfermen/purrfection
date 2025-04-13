@@ -23,7 +23,7 @@ const Cat = connection.define("cat", {
         defaultValue: false,
     },
     comments: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(300),
         allowNull: false
     },
     special_needs: {
