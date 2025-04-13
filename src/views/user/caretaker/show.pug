@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+	h1 Bienvenid@ a tu perfil #(user.name)
+    .info_perfil_caretaker
+
+        h2 Información de tu perfil
+        .datos_perfil_care
+        label(for="name") Nombre de usuario:
+        p= user.name
+        .datos_perfil_care
+        label(for="email") Email:
+        p=user.email
+        .datos_perfil_care
+        label(for="password") Contraseña:
+        p=user.password
+
+    .btn_editar
+        a(href=``) 
+        button Editar
