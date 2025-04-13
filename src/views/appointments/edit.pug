@@ -1,0 +1,16 @@
+extends ../layout 
+
+block content 
+	h1 Edita tu solicitud 
+	
+	form(action=`/appointments/${appointment.appointment_id}`, method="post")
+		label(for="startDate") Fecha de inicio
+		input(type="date", name="start_date", id="startDate", value=appointment.start_date)
+
+		label(for="endDate") Fecha de fin 
+		input(type="date", name="end_date", id="endDate", value=appointment.end_date)
+
+		label(for="description") Descripción 
+		textarea(name="description", id="description")= appointment.description
+
+		button(type="submit") Editar

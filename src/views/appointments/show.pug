@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+	h1 Solicitud ##{appointment.appointment_id}
+	if appointment
+		include appointmentCard
+	else 
+		p No hay ninguna solicitud con este ID

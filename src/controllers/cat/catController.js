@@ -7,7 +7,13 @@ import User from "../../models/user.js";
 //obtener todos los gatos - si tuviermos filtros de búsqueda se pasarían aquí
 async function getAll() {  //ahora es una función
     const cats = await Cat.findAll({
-        include: User //sólo se incluye si nos interesa ver el usuario al que corresponde ese gato, si no se puede dejar vacío
+        include: [ //hay que meterlos todos en un solo include
+            {
+                model: User,
+                attributes: ['user_id', 'name']
+            }
+        ]
+        //include: User //sólo se incluye si nos interesa ver el usuario al que corresponde ese gato, si no se puede dejar vacío
     });
     return cats;
 }

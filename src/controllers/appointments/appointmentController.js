@@ -11,13 +11,16 @@ import { AppointmentDateNotProvided, AppointmentDescriptionNotProvided } from ".
 //crear el appointment con los datos recibidos del formulario
 async function create(data) {
     data.creation_date = new Date();
-    if (!data.start_date || !data.end_date) {
+    if (!data.start_date) {
+        throw new AppointmentDateNotProvided();
+    }
+    if (!data.end_date) {
         throw new AppointmentDateNotProvided();
     }
     if (!data.description) {
         throw new AppointmentDescriptionNotProvided();
     }
-    const response = await Appointment.create({data});
+    const response = await Appointment.create(data);
     return response;
 }
 
@@ -32,13 +35,13 @@ async function getAll() {
                 include: [//del Cat, solo estos atributos
                     {
                         model: Cat,
-                        attributes: ['id', 'name', 'image']
+                        attributes: ['cat_id', 'name', 'image']
                     }
                 ]
             },
             {
                 model: User,
-                attributes: ['id', 'name']
+                attributes: ['user_id', 'name']
             }
         ]
     });
@@ -54,13 +57,13 @@ async function getByID(id) {
                 include: [
                     {
                         model: Cat,
-                        attributes: ['id', 'name', 'image']
+                        attributes: ['cat_id', 'name', 'image']
                     }
                 ]
             },
             {
                 model: User,
-                attributes: ['id', 'name']
+                attributes: ['user_id', 'name']
             }
         ]
     });

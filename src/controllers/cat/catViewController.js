@@ -6,7 +6,7 @@ import Cat from "../../models/cat.js";
 //vista de todos los gatos
 async function getAll(req, res) {
     try {
-    const cats = await Cat.getAll(); //es getAll porque no está llamando al modelo sino al controlador
+    const cats = await catController.getAll(); //es getAll porque no está llamando al modelo sino al controlador
     res.render("cats/list",{cats}) //route - asumiendo que habrá una ruta cats/list, esta es la ruta de la vista y debo indicar qué es lo que espero que renderice esa vista 
     } catch (error) {
         console.error(error);
