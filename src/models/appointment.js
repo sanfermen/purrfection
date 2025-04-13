@@ -18,7 +18,7 @@ const Appointment = connection.define("appointment", {
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(400),
         allowNull: false,
     },
     user_id:{
