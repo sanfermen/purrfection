@@ -33,7 +33,7 @@ article
 		form(
 			action=`/appointments/${appointment.appointment_id}/edit`, 
 			method="get", 
-			onsubmit="return confirm('¿Confirmas que quieres aceptar esta solicitud?')"
+			onsubmit="return confirm('¿Confirmas que quieres aceptar/cancelar esta solicitud?')"
 			)
 			
 			if appointment.accepted === true
