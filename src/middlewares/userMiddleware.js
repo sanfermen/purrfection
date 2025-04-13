@@ -1,3 +1,5 @@
+
+
 // Middleware para pasar usuario a todas las vistas
 
 app.use((req, res, next) => { 
@@ -6,3 +8,4 @@ app.use((req, res, next) => {
     next();
 });
 
+export default userToLocals;

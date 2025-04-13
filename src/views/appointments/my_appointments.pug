@@ -1,0 +1,32 @@
+extends ../layout
+
+extends ../layout
+
+block content
+  h1 Mis Citas
+  if appointments.length
+    table
+      thead
+        tr
+          th Fecha Inicio
+          th Fecha Fin
+          th Descripción
+          th Gato
+          th Acciones
+      tbody
+        each appointment in appointments
+          tr
+            td= appointment.start_date
+            td= appointment.end_date
+            td= appointment.description
+            td
+              if appointment.cat_has_appointments && appointment.cat_has_appointments.length
+                = appointment.cat_has_appointments[0].cat ? appointment.cat_has_appointments[0].cat.name : 'Sin gato'
+              else
+                | Sin gato
+            td
+              a(href=`/appointments/#{appointment.appointment_id}/edit`) Editar
+              form(action=`/appointments/#{appointment.appointment_id}/delete`, method='POST', style='display:inline;')
+                button(type='submit') Eliminar
+  else
+    p No tienes citas.

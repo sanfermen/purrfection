@@ -42,6 +42,7 @@ async function getAll(req, res) {
     try {
         const appointments = await appointmentController.getAll();
         const role = req.session.user?.role;
+        console.log(req.session.user); 
         res.render("appointments/showAll", { appointments, role });
     } catch (error) {
         console.error(error);
@@ -66,10 +67,25 @@ async function getByID(req, res) {
     }
 }
 
+// Obtener sólo las solicitudes de cada usuario
 
+async function getMyAppointments(req, res) {
+    try {
+        const user = req.session.user;
+        console.log('User ID:', user?.id);
+        if (!user || !user.id) return res.redirect("/login?error=No+has+iniciado+sesion");
+        const appointments = await appointmentController.getAll({ user_id: user.id });
+        console.log('Citas:', appointments.length);
+        const role = user.role;
+        res.render('appointments/myAppointments', { appointments, role, user });
+    } catch (error) {
+        console.error("Error:", error);
+        res.render("layout", { error: "Error interno del servidor" });
+    }
+}
 //UPDATE
 
-// formulario de edición de appointments
+// formulario de edición de appointments 
 async function editForm(req, res) {
     try {
         const id = req.params.id;
@@ -141,5 +157,6 @@ export default {
     create,
     editForm,
     edit,
-    remove
+    remove,
+    getMyAppointments
 };

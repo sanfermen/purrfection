@@ -27,22 +27,28 @@ async function create(data) {
 //READ
 
 // conseguir todos los appointments
-async function getAll() {
+/* async function getAll() {
     const appointments = await Appointment.findAll({
-        include: [ //hay que meterlos todos en un solo include
+        include: [
             {
                 model: Cat_Has_Appointment,
-                include: [//del Cat, solo estos atributos
-                    {
-                        model: Cat,
-                        attributes: ['cat_id', 'name', 'image']
-                    }
-                ]
+                include: [{ model: Cat, attributes: ["cat_id", "name", "image"] }]
             },
+            { model: User, attributes: ["user_id", "name"] }
+        ]
+    });
+    return appointments;
+} */
+
+async function getAll(conditions = {}) {
+    const appointments = await Appointment.findAll({
+        where: conditions,
+        include: [
             {
-                model: User,
-                attributes: ['user_id', 'name']
-            }
+                model: Cat_Has_Appointment,
+                include: [{ model: Cat, attributes: ["cat_id", "name", "image"] }]
+            },
+            { model: User, attributes: ["user_id", "name"] }
         ]
     });
     return appointments;
