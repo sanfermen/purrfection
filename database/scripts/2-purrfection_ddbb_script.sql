@@ -28,16 +28,16 @@ INSERT INTO `user` (`email`, `password`, `role`, `name`) VALUES
 -- Insertar registros en la tabla `cat` (gatos)
 -- -----------------------------------------------------
 INSERT INTO `cat` (`name`, `age`, `neuter`, `comments`, `special_needs`, `breed`, `user_id`, `image`) VALUES
-('Milo', 2, 1, 'Muy mimoso y amigable. Siempre saluda a quien llega a casa y se restriega contra tus piernas si le caes bien. Le encanta dormir en regazos calientes. Si le das una chuche te querrá para siempre.', 0, 'Siamés', 1, 'milo.jpg'),
-('Luna', 4, 1, 'Luna es una gata muy tímida, tardarás un poquito en ganarte su confianza pero cuando lo hagas será super cariñosa. Si no le encuentras, se habrá escondido debajo del sofá.', 1, 'Persa', 3, 'luna.jpg'),
-('Simba', 1, 0, 'Es un cachorro muy activo y juguetón, le gusta correr y trepar por las estanterías y estantes de la casa.', 0, 'Maine Coon', 5, 'simba.jpg'),
-('Nala', 5, 1, 'Nala es un poco desconfiada, no le gustan los extraños y es ella quien elige cuándo acercarse. Sin embargo, si te elige, te elegirá para siempre. Pesa 9kg y necesita dieta especial', 1, 'Ragdoll', 7, 'nala.jpg'),
-('Oscar', 3, 1, 'A Oscar no le gusta casi nada. No le gustarás tú, ni siquiera creo que le guste yo. Te juzga desde la distancia y solo se te acercará para comida. Lo que más odia es el agua', 0, 'British Shorthair', 1, 'oscar.jpg'),
-('Cleo', 6, 1, 'Cleo es una señora mayor, le gustan las siestas al sol y los mimos en la tripa. Se mueve despacio y duerme muchísimo, pero cuando está despierta quiere muchos cariños', 1, 'Sphynx', 9, 'cleo.jpg'),
-('Bella', 2, 0, 'Bella es una gata muy activa, tiene gatificación por toda la casa y se tira más tiempo en las autoras que en el suelo. Trepa por todas partes: si no la encuentras estará en las alturas', 0, 'Bengala', 3, 'bella.jpg'),
-('Leo', 7, 1, 'Relajado, duerme mucho. Solo come, caga y duerme.', 0, 'Russian Blue', 5, 'leo.jpg'),
-('Mimi', 1, 0, 'Cachorrita muy mona y pequeña, con mucha energía. Come mucho pero lo gasta enseguida, es pequeña y rápida. ¡Cuidado con las ventanas y las puertas abiertas!', 0, 'Abyssinian', 7, 'mimi.jpg'),
-('Zoe', 4, 1, 'Zoe es una aventurera nata, le encanta explorar los rincones más extraños y pequeños de la casa, pero siempre sabrás dónde está porque habla mucho. Muy cariñosa, le gusta que le rasquen detrás de las orejas', 1, 'Oriental', 9, 'zoe.jpg');
+('Milo', 2, 1, 'Muy mimoso y amigable. Siempre saluda a quien llega a casa y se restriega contra tus piernas si le caes bien. Le encanta dormir en regazos calientes. Si le das una chuche te querrá para siempre.', 0, 'Siamés', 1, 'https://i.imgur.com/qQvfIll.jpeg'),
+('Luna', 4, 1, 'Luna es una gata muy tímida, tardarás un poquito en ganarte su confianza pero cuando lo hagas será super cariñosa. Si no le encuentras, se habrá escondido debajo del sofá.', 1, 'Persa', 3, 'https://i.imgur.com/x95nWbx.jpeg'),
+('Simba', 1, 0, 'Es un cachorro muy activo y juguetón, le gusta correr y trepar por las estanterías y estantes de la casa.', 0, 'Maine Coon', 5, 'https://i.imgur.com/J8z6UYm.jpeg'),
+('Nala', 5, 1, 'Nala es un poco desconfiada, no le gustan los extraños y es ella quien elige cuándo acercarse. Sin embargo, si te elige, te elegirá para siempre. Pesa 9kg y necesita dieta especial', 1, 'Ragdoll', 7, 'https://i.imgur.com/JCJL3bK.jpeg'),
+('Oscar', 3, 1, 'A Oscar no le gusta casi nada. No le gustarás tú, ni siquiera creo que le guste yo. Te juzga desde la distancia y solo se te acercará para comida. Lo que más odia es el agua', 0, 'British Shorthair', 1, 'https://imgur.com/zvWR1Em'),
+('Cleo', 6, 1, 'Cleo es una señora mayor, le gustan las siestas al sol y los mimos en la tripa. Se mueve despacio y duerme muchísimo, pero cuando está despierta quiere muchos cariños', 1, 'Sphynx', 9, 'https://i.imgur.com/jr9fTey.jpeg'),
+('Bella', 2, 0, 'Bella es una gata muy activa, tiene gatificación por toda la casa y se tira más tiempo en las autoras que en el suelo. Trepa por todas partes: si no la encuentras estará en las alturas', 0, 'Bengala', 3, 'https://i.imgur.com/7AJ2jjp.jpeg'),
+('Leo', 7, 1, 'Relajado, duerme mucho. Solo come, caga y duerme.', 0, 'Russian Blue', 5, 'https://i.imgur.com/oav0wNv.jpeg'),
+('Mimi', 1, 0, 'Cachorrita muy mona y pequeña, con mucha energía. Come mucho pero lo gasta enseguida, es pequeña y rápida. ¡Cuidado con las ventanas y las puertas abiertas!', 0, 'Abyssinian', 7, 'https://mundoanimalsantafe.com.ar/wp-content/uploads/2019/06/2.jpg'),
+('Zoe', 4, 1, 'Zoe es una aventurera nata, le encanta explorar los rincones más extraños y pequeños de la casa, pero siempre sabrás dónde está porque habla mucho. Muy cariñosa, le gusta que le rasquen detrás de las orejas', 1, 'Oriental', 9, 'https://content.elmueble.com/medio/2023/03/14/gato-oriental_1ef51fcb_230314183658_900x900.jpg');
 
 -- -----------------------------------------------------
 -- Insertar registros en la tabla `appointment` (citas)
