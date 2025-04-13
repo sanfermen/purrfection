@@ -1,11 +1,16 @@
 extends ../layout 
+
 block content 
-	h1 Editar solicitud de cuidados 
-	form(action="/appointment", method="post")
+	h1 Edita tu solicitud 
+	
+	form(action=`/appointments/${appointment.appointment_id}`, method="post")
 		label(for="startDate") Fecha de inicio
-		input(type="date" name="startDate" id="startDate")
+		input(type="date", name="start_date", id="startDate", value=appointment.start_date)
+
 		label(for="endDate") Fecha de fin 
-		input(type="date" name="endDate" id="endDate")
+		input(type="date", name="end_date", id="endDate", value=appointment.end_date)
+
 		label(for="description") Descripción 
-		input(type="textarea" name="description" id="description")
-		button Enviar
+		textarea(name="description", id="description")= appointment.description
+
+		button(type="submit") Editar

@@ -76,7 +76,7 @@ async function editForm(req, res) {
         const appointment = await appointmentController.getByID(id);
         if (!appointment) return res.redirect("/appointments");
 
-        if (appointment.user_id !== req.session.user?.user_id) {//solo el usuario que la creó puede editar
+        if (appointment.user_id !== req.session.user?.id) {//solo el usuario que la creó puede editar
             return res.render("layout", { error: "No tienes permiso para editar esta cita" });
         }
         res.render("appointments/edit", { appointment });
@@ -94,7 +94,7 @@ async function edit(req, res) {
         if (!appointment) {
             return res.redirect("/appointments?error=La+cita+no+existe");
         }
-        if (appointment.user_id !== req.session.user?.user_id) {//solo el creador puede editar
+        if (appointment.user_id !== req.session.user?.id) {//solo el creador puede editar
             return res.render("layout", { error: "No tienes permiso para editar esta cita" });
         }
 
@@ -121,7 +121,7 @@ async function remove(req, res) {
 
         if (!appointment) return res.redirect("/appointments");
 
-        if (appointment.user_id !== req.session.user?.user_id) {//solo el creador puede eliminar
+        if (appointment.user_id !== req.session.user?.id) {//solo el creador puede eliminar
             return res.render("layout", { error: "No tienes permiso para eliminar esta cita" });
         }
         const result = await appointmentController.remove(id);
