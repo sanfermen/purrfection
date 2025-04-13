@@ -3,12 +3,12 @@ article
 	p(class="appointment-card__creation-date") Solicitud creada el #{appointment.creation_date}
 
 	//-esta línea no la lee if appointment.cat_has_appointments.length > 0
-	h3 Los michis que hay que cuidar:
 	section(class="appointment-card__images")
-	each cat in appointment.cat_has_appointments
-		article(class="appointment-cat")
-		h4= cat.cat.name
-		img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
+		h3 Los michis que hay que cuidar:
+			each cat in appointment.cat_has_appointments
+				article(class="appointment-cat")
+				h4= cat.cat.name
+				img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
 	section(class="appointment-card__when")
 		h3 ¿Cuándo?
 		p Fecha de inicio: #{appointment.start_date}
