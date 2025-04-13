@@ -76,30 +76,64 @@ async function editForm(req, res) {
         const appointment = await appointmentController.getByID(id);
         if (!appointment) return res.redirect("/appointments");
 
-        if (appointment.user_id !== req.session.user?.id) {//solo el usuario que la creó puede editar
+        // Permitir acceso al dueño o a un caretaker
+        if (
+            appointment.user_id !== req.session.user?.id &&
+            req.session.user?.role !== 'caretaker'
+        ) {
             return res.render("layout", { error: "No tienes permiso para editar esta cita" });
         }
-        res.render("appointments/edit", { appointment });
+
+        res.render("appointments/edit", {
+            appointment,
+            user: req.session.user
+        });
     } catch (error) {
         console.error(error);
         res.render("layout", { error: "Error interno del servidor" });
     }
 }
 
+
 async function edit(req, res) {
     const id = req.params.id;
+
     try {
         const appointment = await appointmentController.getByID(id);
 
         if (!appointment) {
             return res.redirect("/appointments?error=La+cita+no+existe");
         }
-        if (appointment.user_id !== req.session.user?.id) {//solo el creador puede editar
-            return res.render("layout", { error: "No tienes permiso para editar esta cita" });
+
+        const currentUser = req.session.user;
+
+        // Si el usuario es el creador de la cita
+        if (appointment.user_id === currentUser?.id) {
+            // Evita que modifique el campo "accepted"
+            const { start_date, end_date, description } = req.body;
+
+            const updatedData = {
+                start_date,
+                end_date,
+                description
+                // Se omite "accepted"
+            };
+
+            await appointmentController.edit(id, updatedData);
+            return res.redirect("/appointments/" + id);
         }
 
-        const result = await appointmentController.edit(id, req.body);
-        res.redirect("/appointments/" + id);
+        // Si el usuario es un caretaker
+        if (currentUser?.role === "caretaker") {
+            // Solo puede cambiar el campo "accepted"
+            const { accepted } = req.body;
+            await appointmentController.edit(id, { accepted });
+            return res.redirect("/appointments/" + id);
+        }
+
+        // Si no cumple ninguna condición, no tiene permiso
+        return res.render("layout", { error: "No tienes permiso para editar esta cita" });
+
     } catch (error) {
         console.error(error);
         if (error.statusCode) {

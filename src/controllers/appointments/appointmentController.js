@@ -93,6 +93,7 @@ async function edit(id, data) {
     return result;
 }
 
+
 //DELETE
 
 //eliminar la cita
@@ -104,6 +105,7 @@ async function remove(id) {
     });
     return response;
 }
+
 
 //EXPORTS
 

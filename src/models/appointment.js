@@ -27,6 +27,11 @@ const Appointment = connection.define("appointment", {
     },
     creation_date:{
         type: DataTypes.DATE,
+    },
+    accepted:{
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
     }
 })
 
