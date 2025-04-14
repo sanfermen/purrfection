@@ -19,14 +19,15 @@ article(class="appointment-card")
 
 	//- Editar y eliminar solo si eres el creador de la cita
 	if user && appointment.user_id == user.id
-		form(action=`/appointments/${appointment.appointment_id}/edit`, method="get")
-			button(type="submit" class="btn-edit") Editar
-		form(
-			action=`/appointments/${appointment.appointment_id}/delete`, 
-			method="post", 
-			onsubmit="return confirm('¿Estás seguro de que quieres eliminar esta solicitud?')"
-			)
-			button(type="submit" class="btn-delete") Eliminar
+		section(class="appointment__buttons")
+			form(action=`/appointments/${appointment.appointment_id}/edit`, method="get")
+				button(type="submit" class="appointment-editremove") Editar
+			form(
+				action=`/appointments/${appointment.appointment_id}/delete`, 
+				method="post", 
+				onsubmit="return confirm('¿Estás seguro de que quieres eliminar esta solicitud?')"
+				)
+				button(type="submit" class="appointment-editremove") Eliminar
 
 
 	//- Botón de aceptar solicitud solo si eres un caretaker
