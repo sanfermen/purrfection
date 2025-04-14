@@ -5,6 +5,8 @@ const router = Router();
 
 router.post("/",userViewController.create)
 
+router.get("/profile",userViewController.showProfile)
+
 router.get("/:id",userViewController.getByID)
 
 router.post("/:id",userViewController.edit)

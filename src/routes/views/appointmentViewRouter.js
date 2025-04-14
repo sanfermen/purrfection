@@ -7,7 +7,7 @@ const router = Router();
 // conseguir todos los appointments
 router.get("/", isLoggedInSession, appointmentViewController.getAll)
 
-// conseguir appointments de un cliente
+// mostrar appointments de un cliente
 router.get("/mine",appointmentViewController.getMyAppointments)
 
 

@@ -41,14 +41,26 @@ async function remove(id) {
         return response;
 }
 
+
+async function getProfile(id) {
+  try {
+    const user = await User.findByPk(id);
+    return user; 
+  } catch (error) {
+    throw error;
+  }
+}
+
 export {
     getByID,
     edit,
     remove,
+    getProfile
 }
 
 export default {
     getByID,
     edit,
     remove,
+    getProfile
 };
