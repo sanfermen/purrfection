@@ -1,38 +1,39 @@
 extends ../layout 
 
 block content
-	h2 Registro
 
-	form(action="/register", method="post") 
-		section(class="form-section")
-			label(for="name") Nombre de usuario
-			input(type="text", name="name", id="name", maxlength="45", required)
-		section(class="form-section")
-			label(for="email") Email
-			input(type="email", name="email", id="email", maxlength="128", required)
-		section(class="form-section")
-			label(for="password") Contraseña
-			input(type="password", name="password", id="password", minlength="6", required)
-		section(class="form-section")
-			label(for="confirm_password") Confirmar Contraseña
-			input(type="password", name="confirm_password", id="confirm_password", minlength="6", required)
-		section(class="form-section")
-			label(for="role") Rol 
-			select#role(name="role", required)
-				option(value="client") Cliente 
-				option(value="caretaker") Purrfesional
-		//-Campos extra para Cliente (escondidos al principio)
-		section(class="form-section", id="cat-fields", style="display: none;")
-			label(for="cat_name") Nombre de tus michis
-			input(type="text", name="cat_name", id="cat_name")
+    section(class="section_reg")
+        h2 Registro
+        form(action="/register", method="post") 
+            section(class="form-section")
+                label(for="name") Nombre de usuario
+                input(type="text", name="name", id="name", maxlength="45", required)
+            section(class="form-section")
+                label(for="email") Email
+                input(type="email", name="email", id="email", maxlength="128", required)
+            section(class="form-section")
+                label(for="password") Contraseña
+                input(type="password", name="password", id="password", minlength="6", required)
+            section(class="form-section")
+                label(for="confirm_password") Confirmar Contraseña
+                input(type="password", name="confirm_password", id="confirm_password", minlength="6", required)
+            section(class="form-section")
+                label(for="role") Rol 
+                select#role(name="role", required)
+                    option(value="client", id="client") Cliente 
+                    option(value="caretaker", id="purrfesional") Purrfesional
+            //-Campos extra para Cliente (escondidos al principio)
+            section(class="form-section", id="cat-fields", style="display: none;")
+                label(for="cat_name") Nombre de tus michis
+                input(type="text", name="cat_name", id="cat_name")
 
-			label(for="cat_description") Descripción de tus michis
-			textarea(name="cat_description", id="cat_description")
+                label(for="cat_description") Descripción de tus michis
+                textarea(name="cat_description", id="cat_description")
 
-			label(for="cat_image") Foto url
-			input(type="url", name="cat_image", id="cat_image")
+                label(for="cat_image") Foto url
+                input(type="url", name="cat_image", id="cat_image")
 
-		section(class="form-section button")  
-			button(type="submit") Regístrate
-
-	script(src="/js/register.js")
+            section(class="reg_button")  
+                button(type="submit") Regístrate 
+                
+     script(src="/js/register.js")
