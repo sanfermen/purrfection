@@ -83,6 +83,26 @@ async function getMyAppointments(req, res) {
         res.render("layout", { error: "Error interno del servidor" });
     }
 }
+
+async function getMyAcceptedAppointments(req, res) {
+    try {
+        const user = req.session.user;
+        if (!user || !user.id) return res.redirect("/login?error=No+has+iniciado+sesion");
+
+        // Comprobamos que es caretaker
+        if (user.role !== 'caretaker') {
+            return res.render("layout", { error: "No tienes permisos para ver esto" });
+        }
+
+        const appointments = await appointmentController.getAcceptedByCaretaker(user.id);
+
+        res.render('appointments/myAppointments', { appointments, user });
+    } catch (error) {
+        console.error("Error:", error);
+        res.render("layout", { error: "Error interno del servidor" });
+    }
+}
+
 //UPDATE
 
 // formulario de edición de appointments 
@@ -143,7 +163,9 @@ async function edit(req, res) {
         if (currentUser?.role === "caretaker") {
             // Solo puede cambiar el campo "accepted"
             const { accepted } = req.body;
-            await appointmentController.edit(id, { accepted });
+            await appointmentController.edit(id, { 
+				accepted, 
+				caretaker_id: currentUser.id});
             return res.redirect("/appointments/" + id);
         }
 
@@ -192,5 +214,6 @@ export default {
     editForm,
     edit,
     remove,
-    getMyAppointments
+    getMyAppointments,
+	getMyAcceptedAppointments
 };
