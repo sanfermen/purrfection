@@ -55,33 +55,6 @@ async function getAll() {
     return appointments;
 } 
 
-async function getAll() {
-    const appointments = await Appointment.findAll({
-        where: {
-            accepted: false, //que no se hayan aceptado todavía
-            end_date: {
-                [Op.gt]: new Date() //si son más tarde que NOW
-            }
-        },
-        include: [
-            {
-                model: Cat_Has_Appointment,
-                include: [
-                    {
-                        model: Cat,
-                        attributes: ['cat_id', 'name', 'image']
-                    }
-                ]
-            },
-            {
-                model: User,
-                attributes: ['user_id', 'name']
-            }
-        ],
-        order: [['start_date', 'ASC']]
-    });
-}
-
 async function getMine(user_id ){
     const appointments = await Appointment.findAll({
         where: {
@@ -174,5 +147,6 @@ export default { //como vamos a tener varias funciones con los mismos nombres, m
     getByID,
     create,
     edit,
-    remove
+    remove,
+	getMine
 };
