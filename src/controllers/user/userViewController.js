@@ -76,7 +76,7 @@ async function remove(req, res) {
 
 async function showProfile(req, res) {
         try {
-          const id = req.params.id;
+          const id = req.session.user.id;
           const response = await userController.getProfile(id);
           if (!response) {
             return res.render("user/profile", { error: "Usuario no encontrado" });
