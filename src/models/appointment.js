@@ -32,7 +32,10 @@ const Appointment = connection.define("appointment", {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
-    }
+    },
+	caretaker_id:{
+		type: DataTypes.INTEGER.UNSIGNED,
+	}
 })
 
 export default Appointment;

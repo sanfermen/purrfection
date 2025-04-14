@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    section(class="cat")
+        h1 Perfil de #{cat.name}
+        img(src=cat.image, alt=`Imagen de ${cat.name}`, class="cat__image")
+        
+        h2 Descripción: 
+        section(class="cat__description")
+            if cat.age
+                p Edad: #{cat.age}
+            else
+                p Sin datos sobre la edad del michi 🐾
+
+            if cat.breed
+                p Raza: #{cat.breed}
+            else
+                p Sin datos sobre la raza 🐾
+
+            if cat.neuter
+                p ¿Está castradx?: #{cat.neuter}
+            else
+                p Sin datos sobre la castración 🐾
+            
+            if cat.special_needs
+                p ¿Necesidades especiales?: #{cat.special_needs}
+            else
+                p Sin datos sobre necesidades especiales 🐾
+            
+            if cat.comments
+                p #{cat.comments}
+            else
+                p Este michi aún no tiene descripción 🐾
+
+        a(href="/appointments", class="cat__back") Volver a las solicitudes

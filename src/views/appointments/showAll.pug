@@ -1,11 +1,11 @@
 extends ../layout
 
 block content
-	h1 Todas las solicitudes
-	if appointments.length > 0
-		each appointment in appointments
-			include appointmentCard
-			div(class="appointment-goto")  
-				a(href=`/appointments/${appointment.appointment_id}` class="btn-link") Ir a la solicitud
-	else 
-		p No hay ninguna solicitud registrada
+	section(class="showAll")
+		h1(class="showAll__title") TODAS LAS SOLICITUDES
+		article(class="showAll__card")
+			if appointments.length > 0
+				each appointment in appointments
+					include appointmentCard
+			else 
+				p No hay ninguna solicitud registrada

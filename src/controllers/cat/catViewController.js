@@ -20,15 +20,16 @@ async function getByID(req,res){
         const id = req.params.id;
         const cat = await catController.getByID(id);
         if (!cat) {
-            res.render("layout",{error: "There is no cat for that id"});   
+            res.render("layout",{error: "No hay ningún gato con este ID"});   
             return; 
         }
         res.render("cat/show",{cat}); 
     } catch (error) {
         console.error(error);
-        res.render("layout",  {error: "Internal server error"}) //route 
+        res.render("layout",  {error: "Error del servidor interno"}) //route 
     }  
 }
+
 
 //mostrar el form
 async function createForm(req, res) {  
