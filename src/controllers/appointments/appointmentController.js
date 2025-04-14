@@ -40,18 +40,57 @@ async function create(data) {
     return appointments;
 } */
 
-async function getAll(conditions = {}) {
+async function getAll() {
     const appointments = await Appointment.findAll({
-        where: conditions,
+        where: {
+            accepted: false, //que no se hayan aceptado todavía
+            end_date: {
+                [Op.gt]: new Date() //si son más tarde que NOW
+            }
+        },
         include: [
             {
                 model: Cat_Has_Appointment,
-                include: [{ model: Cat, attributes: ["cat_id", "name", "image"] }]
+                include: [
+                    {
+                        model: Cat,
+                        attributes: ['cat_id', 'name', 'image']
+                    }
+                ]
             },
-            { model: User, attributes: ["user_id", "name"] }
-        ]
+            {
+                model: User,
+                attributes: ['user_id', 'name']
+            }
+        ],
+        order: [['start_date', 'ASC']]
     });
-    return appointments;
+}
+
+
+async function getMine(user_id ){
+    const appointments = await Appointment.findAll({
+        where: {
+            user_id:user_id
+            }
+        ,
+        include: [
+            {
+                model: Cat_Has_Appointment,
+                include: [
+                    {
+                        model: Cat,
+                        attributes: ['cat_id', 'name', 'image']
+                    }
+                ]
+            },
+            {
+                model: User,
+                attributes: ['user_id', 'name']
+            }
+        ],
+        order: [['start_date', 'ASC']]
+    });
 }
 
 // conseguir un appointment concreto
