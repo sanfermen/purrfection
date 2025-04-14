@@ -74,6 +74,21 @@ async function remove(req, res) {
         }
 }
 
+async function showProfile(req, res) {
+        try {
+          const id = req.params.id;
+          const response = await userController.getProfile(id);
+          if (!response) {
+            return res.render("user/profile", { error: "Usuario no encontrado" });
+          }
+          res.render("user/profile", { user: response });
+        } catch (error) {
+          console.error(error); 
+          res.render("user/profile", { error: "Error del servidor interno" });
+        }
+}
+
+
 export {
     getByID,
     createForm,
@@ -81,6 +96,7 @@ export {
     editForm,
     edit,
     remove,
+    showProfile
 }
 
 export default {
@@ -90,4 +106,5 @@ export default {
     editForm,
     edit,
     remove,
+    showProfile
 };

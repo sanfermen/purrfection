@@ -7,9 +7,8 @@ const router = Router();
 // conseguir todos los appointments
 router.get("/", isLoggedInSession, appointmentViewController.getAll)
 
-// conseguir appointments de un cliente
-router.get("/appointments/mine",appointmentViewController.getMyAppointments)
-
+// mostrar appointments de un cliente
+router.get("/mine",appointmentViewController.getMyAppointments)
 
 // crear un appointment
 router.get("/create", isLoggedInSession, isClient, appointmentViewController.createForm);
@@ -21,9 +20,6 @@ router.post("/:id",isLoggedInSession, appointmentViewController.edit)
 
 // ruta para eliminar un appointment
 router.post("/:id/delete", isLoggedInSession, appointmentViewController.remove)
-
-// conseguir los apointments del usuario logueado
-router.get("/mine", isLoggedInSession, isClient, appointmentViewController.getMyAppointments); 
 
 // conseguir un appointment por el id (siempre tiene que ir la última para no sobreescribir el resto de rutas)
 router.get("/:id", isLoggedInSession, appointmentViewController.getByID)
