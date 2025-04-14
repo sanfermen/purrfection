@@ -21,6 +21,7 @@ Imagen descriptiva del equipo técnico durante este proyecto:
 Para que el proyecto sea funcional en tu ordenador, completa los datos solicitados en el **.env.example** y elimina el .example. ¡Ahora debería funcionar!
 Datos en el interior del **.env**:
 ```js
+DB_ROOT_PASSWORD=
 DB_HOST=
 DB_PORT=
 DB_USER=
@@ -28,4 +29,6 @@ DB_PASSWORD=
 DB_NAME=
 
 APP_PORT=
+APP_HOST=
+SESSION_SECRET=
 ```
