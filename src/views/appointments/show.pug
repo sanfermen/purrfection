@@ -1,8 +1,9 @@
 extends ../layout
 
 block content
-	h1 Solicitud ##{appointment.appointment_id}
-	if appointment
-		include appointmentCard
-	else 
-		p No hay ninguna solicitud con este ID
+	section(class="showID")
+		h1(class="showID__title") Solicitud ##{appointment.appointment_id}
+		if appointment
+			include appointmentCard
+		else 
+			p No hay ninguna solicitud con este ID
