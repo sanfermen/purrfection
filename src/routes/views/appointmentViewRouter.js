@@ -7,6 +7,10 @@ const router = Router();
 // conseguir todos los appointments
 router.get("/", isLoggedInSession, appointmentViewController.getAll)
 
+// conseguir appointments de un cliente
+router.get("/appointments/mine",appointmentViewController.getMyAppointments)
+
+
 // crear un appointment
 router.get("/create", isLoggedInSession, isClient, appointmentViewController.createForm);
 router.post("/", isLoggedInSession, isClient, appointmentViewController.create);
@@ -28,5 +32,3 @@ router.get("/:id", isLoggedInSession, appointmentViewController.getByID)
 
 
 export default router;
-
-
