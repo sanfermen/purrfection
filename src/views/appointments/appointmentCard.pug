@@ -1,20 +1,21 @@
-article
-	h2(class="appointment-card") ¡#{appointment.user.name} necesita ayuda con su michi!
-	p(class="appointment-card__creation-date") Solicitud creada el #{appointment.creation_date}
-
+article(class="appointment-card")
+	h2 ¡#{appointment.user.name} necesita ayuda con su michi!
+	p(class="appointment-card__creation-date") Solicitud creada el #{appointment.creation_date}	
+	a(href=`/appointments/${appointment.appointment_id}`, class="appointment-card__goto") Ir a la solicitud
 	//-esta línea no la lee if appointment.cat_has_appointments.length > 0
 	section(class="appointment-card__images")
 		h3 Los michis que hay que cuidar:
 			each cat in appointment.cat_has_appointments
 				article(class="appointment-cat")
-				h4= cat.cat.name
-				img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
+					a(href=`/cat/${cat.cat_id}`) #{cat.cat.name}
+					img(class="appointment-card__image" src=cat.cat.image alt="imagen del gato")
 	section(class="appointment-card__when")
 		h3 ¿Cuándo?
 		p Fecha de inicio: #{appointment.start_date}
 		p Fecha de fin: #{appointment.end_date}
-	section(class="appointment-car__description")
-		p Descripción: #{appointment.description}
+	section(class="appointment-card__description")
+		h3 Descripción:
+		p #{appointment.description}
 
 	//- Editar y eliminar solo si eres el creador de la cita
 	if user && appointment.user_id == user.id
@@ -37,6 +38,6 @@ article
 			)
 			
 			if appointment.accepted === true
-				button(type="submit" class="btn-cancel") Cancelar solicitud
+				button(type="submit" class="appointment-card__accept") Cancelar solicitud
 			else
-				button(type="submit" class="btn-accept") Aceptar solicitud
+				button(type="submit" class="appointment-card__accept") Aceptar solicitud

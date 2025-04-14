@@ -69,19 +69,67 @@ button:hover {
 	background-color: #6b44c1;
 }
 
-.appointment-card {
-	background-color: #fff;
-	padding: 1rem;
-	margin-bottom: 1rem;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/*SHOW ALL*/
+
+.showAll__title {
+	text-align: center;
+	margin: 2em;
 }
 
-.appointment-card__images {
+.showAll__card {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
-	margin-top: 1rem;
+	justify-content: center;
+	margin-bottom: 2em;
+	gap: 4em;
+}
+
+/*APPOINTMENT CARD*/
+.appointment-card__title a {
+	text-align: center;
+	font-size: 4em;
+}
+
+.appointment-card {
+	display:flex;
+	flex-flow: column;
+	background-color: #ebf3f9;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	max-width: 45%;
+	min-width: 30%;
+	padding: 2.5em;
+}
+
+.appointment-card__creation-date {
+	text-align: start;
+	font-size: 0.8em;
+}
+
+.appointment-card__goto {
+	font-size: 1em;
+	font-weight: bolder;
+	background-color: #6b44c1;
+	color:white;
+	padding: 0.5em;
+    text-align: end;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px
+}
+
+.appointment-cat {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+	gap: 4em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+.appointment-cat h4 {
+	font-weight: lighter;
 }
   
 .appointment-card__image {
@@ -90,4 +138,61 @@ button:hover {
 	object-fit: cover;
 	border-radius: 8px;
 	border: 2px solid #4b2e83;
+}
+
+.appointment-card__when {
+	margin-bottom: 2em;
+}
+
+.appointment-card a:hover {
+	color:#ae9ada;
+}
+
+
+/*CAT*/
+
+.cat {
+	display: flex;
+	flex-flow: column;
+	margin-top: 3em;
+	margin-left: 3em;
+}
+
+.cat img {
+	margin-top: 1em;
+	width: 700px;
+}
+
+.cat h2 {
+	margin-top: 1em;
+}
+
+.cat__description {
+	font-size: 1.2em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+.cat__back {
+	font-size: 1.1em;
+}
+
+
+/*SHOW APPOINTMENT*/
+
+.showID {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2em;
+}
+
+.showID__title {
+	margin: 1em;
+}
+
+.appointment-card__accept {
+	font-size: 1.1em;
+	margin-top: 1em;
 }
