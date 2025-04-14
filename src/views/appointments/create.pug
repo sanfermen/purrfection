@@ -1,11 +1,12 @@
 extends ../layout 
-block content 
-	h1 Nueva solicitud de cuidados 
-	form(action="/appointments", method="post")
-		label(for="startDate") Fecha de inicio
-			input(type="date" name="start_date" id="startDate")
-		label(for="endDate") Fecha de fin 
-			input(type="date" name="end_date" id="endDate")
-		label(for="description") Descripción 
-			textarea(name="description" id="description")
-		button Enviar
+block content
+	section(class="create__app")
+		h1 Nueva solicitud de cuidados 
+		form(action="/appointments", method="post", class="create__form")
+			label(for="startDate") Fecha de inicio:  
+				input(type="date" name="start_date" id="startDate")
+			label(for="endDate") Fecha de fin:  
+				input(type="date" name="end_date" id="endDate")
+			label(for="description") Descripción:  
+				textarea(name="description" id="description")
+			button Enviar
