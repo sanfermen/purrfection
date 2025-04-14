@@ -74,8 +74,8 @@ async function getMyAppointments(req, res) {
         const user = req.session.user;
         console.log('User ID:', user?.id);
         if (!user || !user.id) return res.redirect("/login?error=No+has+iniciado+sesion");
-        const appointments = await appointmentController.getAll({ user_id: user.id });
-        console.log('Citas:', appointments.length);
+        const appointments = await appointmentController.getMine(user.id);
+		console.log(appointments);
         const role = user.role;
         res.render('appointments/myAppointments', { appointments, role, user });
     } catch (error) {
