@@ -38,17 +38,6 @@ async function create(req, res) {
 //READ
 
 // conseguir todos los appointments
-/* async function getAll(req, res) {
-    try {
-        const appointments = await appointmentController.getAll();
-        const role = req.session.user?.role;
-        console.log(req.session.user); 
-        res.render("appointments/showAll", { appointments, role });
-    } catch (error) {
-        console.error(error);
-        res.render("layout", { error: "Error interno del servidor" });
-    }
-} */
     async function getAll(req, res) {
         try {
             const appointments = await appointmentController.getAll();
