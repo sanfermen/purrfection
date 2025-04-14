@@ -343,3 +343,21 @@ button:hover {
 	flex-flow: column;
 	padding-top: 3em;
 }
+
+
+/*PROFILE*/
+
+.profile {
+	display: flex;
+	flex-flow: column;
+	padding-top: 3em;
+	margin-left: 4em;
+}
+
+.profile h1, .profile h2 {
+	padding-bottom: 1em;
+}
+
+.profile__info {
+
+}

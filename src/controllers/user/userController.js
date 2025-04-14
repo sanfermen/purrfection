@@ -8,6 +8,7 @@ async function getByID(id) {
         const user = await User.findByPk(id, {
             include: [Cat, Appointment]
         });
+		console.log(user)
         return user;
 }
 
