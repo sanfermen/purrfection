@@ -38,7 +38,7 @@ async function create(req, res) {
 //READ
 
 // conseguir todos los appointments
-async function getAll(req, res) {
+/* async function getAll(req, res) {
     try {
         const appointments = await appointmentController.getAll();
         const role = req.session.user?.role;
@@ -48,7 +48,18 @@ async function getAll(req, res) {
         console.error(error);
         res.render("layout", { error: "Error interno del servidor" });
     }
-}
+} */
+    async function getAll(req, res) {
+        try {
+            const appointments = await appointmentController.getAll();
+            const user = req.session.user; // Necesito el objeto completo para renderizar las vistas según el tipo de usuario
+            console.log("Usuario:", user);
+            res.render("appointments/showAll", { appointments, user });
+        } catch (error) {
+            console.error(error);
+            res.render("layout", { error: "Error interno del servidor" });
+        }
+    }
 
 // conseguir un appointment concreto
 async function getByID(req, res) {

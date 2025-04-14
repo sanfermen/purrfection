@@ -21,10 +21,10 @@ block content
               if appointment.cat_has_appointments && appointment.cat_has_appointments.length
                 = appointment.cat_has_appointments[0].cat.name
               else
-                | Sin gato
+                | No hay información de este michi
             td
               a(href=`/appointments/#{appointment.appointment_id}/edit`) Editar
               form(action=`/appointments/#{appointment.appointment_id}/delete`, method='POST', style='display:inline;')
                 button(type='submit') Eliminar
   else
-    p No tienes citas.
+    p No hay solicitudes para mostrar.
