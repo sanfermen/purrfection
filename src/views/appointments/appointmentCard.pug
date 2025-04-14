@@ -29,5 +29,14 @@ article
 
 
 	//- Botón de aceptar solicitud solo si eres un caretaker
-	if user && user.role == "caretaker"
-		button(type="button" class="btn-accept" onclick=`acceptAppointment(${appointment.appointment_id})`) Aceptar solicitud
+	if user && user.role === 'caretaker'
+		form(
+			action=`/appointments/${appointment.appointment_id}/edit`, 
+			method="get", 
+			onsubmit="return confirm('¿Confirmas que quieres aceptar/cancelar esta solicitud?')"
+			)
+			
+			if appointment.accepted === true
+				button(type="submit" class="btn-cancel") Cancelar solicitud
+			else
+				button(type="submit" class="btn-accept") Aceptar solicitud

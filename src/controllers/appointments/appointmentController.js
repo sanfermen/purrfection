@@ -3,6 +3,7 @@ import Cat_Has_Appointment from "../../models/cha.js";
 import Cat from "../../models/cat.js";
 import User from "../../models/user.js";
 import { AppointmentDateNotProvided, AppointmentDescriptionNotProvided } from "../../utils/errors.js";
+import { Op } from "sequelize";
 
 //CRUD DE APPOINTMENT
 
@@ -27,32 +28,33 @@ async function create(data) {
 //READ
 
 // conseguir todos los appointments
-/* async function getAll() {
+async function getAll() {
     const appointments = await Appointment.findAll({
+        where: {
+            accepted: false, //que no se hayan aceptado todavía
+            end_date: {
+                [Op.gt]: new Date() //si son más tarde que NOW
+            }
+        },
         include: [
             {
                 model: Cat_Has_Appointment,
-                include: [{ model: Cat, attributes: ["cat_id", "name", "image"] }]
+                include: [
+                    {
+                        model: Cat,
+                        attributes: ['cat_id', 'name', 'image']
+                    }
+                ]
             },
-            { model: User, attributes: ["user_id", "name"] }
-        ]
+            { 
+             model: User,
+             attributes: ["user_id", "name"] }
+        ],
+      order: [['start_date', 'ASC']]
     });
     return appointments;
-} */
+} 
 
-async function getAll(conditions = {}) {
-    const appointments = await Appointment.findAll({
-        where: conditions,
-        include: [
-            {
-                model: Cat_Has_Appointment,
-                include: [{ model: Cat, attributes: ["cat_id", "name", "image"] }]
-            },
-            { model: User, attributes: ["user_id", "name"] }
-        ]
-    });
-    return appointments;
-}
 
 // conseguir un appointment concreto
 async function getByID(id) {
@@ -99,6 +101,7 @@ async function edit(id, data) {
     return result;
 }
 
+
 //DELETE
 
 //eliminar la cita
@@ -110,6 +113,7 @@ async function remove(id) {
     });
     return response;
 }
+
 
 //EXPORTS
 
