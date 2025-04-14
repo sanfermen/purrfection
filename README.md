@@ -55,5 +55,6 @@ Este comando lee el package-json e instala todas las librerías que necesitamos 
 
 
 ¡Miauchas gracias!
-![alt text][https://i.imgflip.com/3u04h5.jpg?a484368](https://tse4.mm.bing.net/th?id=OIP.6Om-9evX6-VJVEnyPSHC9gHaD4&pid=Api)
+
+![alt_text](https://assets.epuzzle.info/puzzle/086/127/original.jpg)
 
