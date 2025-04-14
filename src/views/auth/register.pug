@@ -1,6 +1,7 @@
 extends ../layout 
 
 block content
+
     section(class="section_reg")
         h2 Registro
         form(action="/register", method="post") 
@@ -33,4 +34,6 @@ block content
                 input(type="url", name="cat_image", id="cat_image")
 
             section(class="reg_button")  
-                button(type="submit") Regístrate
+                button(type="submit") Regístrate 
+                
+     script(src="/js/register.js")

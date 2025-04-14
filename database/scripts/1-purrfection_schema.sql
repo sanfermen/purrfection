@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `purfection`.`appointment` (
   `user_id` INT UNSIGNED NOT NULL,
   `creation_date` DATE NULL,
   `accepted` TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  `caretaker_id` INT UNSIGNED,
   PRIMARY KEY (`appointment_id`),
   INDEX `fk_appointment_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_appointment_user1`

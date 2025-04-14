@@ -17,16 +17,12 @@ header
           li
             a(href="/appointments/mine") MIS SOLICITUDES
           li
-            a(href="/user/profile/edit") MODIFICAR PERFIL
-          li
             a(href="/logout") LOGOUT
         else if user.role === 'caretaker'
           li
             a(href="/appointments") TODAS LAS SOLICITUDES
           li
             a(href="/appointments/accepted") MIS SOLICITUDES ACEPTADAS
-          li
-            a(href="/user/profile/edit") MODIFICAR PERFIL
           li
             a(href="/logout") LOGOUT
         

@@ -104,6 +104,14 @@ async function getByID(id) {
     return appointment;
 }
 
+async function getAcceptedByCaretaker(caretaker_id) {
+    return await Appointment.findAll({
+        where: {
+            caretaker_id: caretaker_id,
+            accepted: 1
+        }
+    });
+}
 
 //UPDATE
 
@@ -149,5 +157,6 @@ export default { //como vamos a tener varias funciones con los mismos nombres, m
     create,
     edit,
     remove,
-	getMine
+	getMine,
+	getAcceptedByCaretaker
 };
