@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  h1(class="myapps__title") Mis Solicitudes
+  section(class="myapps")
+    
+    if appointments.length
+      table(class="myapps__table")
+        thead
+          tr(class="myapps__table-head")
+            th Fecha Inicio
+            th Fecha Fin
+            th Descripción
+            th Gato
+            th Acciones
+        tbody
+          each appointment in appointments
+            tr(class="myapps__table-body")
+              td= appointment.start_date
+              td= appointment.end_date
+              td= appointment.description
+              td
+                if appointment.cat_has_appointments && appointment.cat_has_appointments.length
+                  = appointment.cat_has_appointments[0].cat.name
+                else
+                  | No hay información de este michi
+              td(class="myapps__buttons")
+                form(action=`/appointments/${appointment.appointment_id}/edit`, method='GET', style='display:inline;')
+                  button(type='submit') Editar
+               
+                form(action=`/appointments/${appointment.appointment_id}/delete`, method='POST', style='display:inline;',
+                onsubmit="return confirm('¿Seguro que quieres eliminar esta solicitud?')")   
+                  button(type="submit") Eliminar
+    else
+      p No hay solicitudes para mostrar.
