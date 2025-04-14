@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+	section(class="showAll")
+		h1(class="showAll__title") TODAS LAS SOLICITUDES
+		article(class="showAll__card")
+			if appointments.length > 0
+				each appointment in appointments
+					include appointmentCard
+			else 
+				p No hay ninguna solicitud registrada

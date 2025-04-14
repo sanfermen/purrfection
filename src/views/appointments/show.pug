@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+	section(class="showID")
+		h1(class="showID__title") Solicitud ##{appointment.appointment_id}
+		if appointment
+			include appointmentCard
+		else 
+			p No hay ninguna solicitud con este ID

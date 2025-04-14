@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+	section(class="profile")
+		if user && user.name
+			h1 Bienvenid@ a tu perfil #{user.name}
+
+			section(class="profile__info")
+				h2 Información de tu perfil
+
+				if user.name && user.email && user.role
+					label(for="name") Nombre de usuario:
+					p= user.name
+					label(for="email") Email:
+					p= user.email
+					label(for="role") Rol:
+					p= user.role
+
+				else
+					p Datos incompletos.
+					
+		else
+			p No se pudo cargar el perfil.
