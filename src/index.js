@@ -17,6 +17,11 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
+app.use((req, res, next) => { 
+    
+    res.locals.user = req.session.user || null; 
+    next();
+});
 app.use(express.json()); // para API (formato json)
 app.use(express.urlencoded({extended:true})); // para Vistas (formato formulario)
 
@@ -33,3 +38,4 @@ app.use("/",router);
 app.listen(APP_PORT,()=>{
     console.log(`Backend conectado al puerto ${APP_PORT}`);
 })
+

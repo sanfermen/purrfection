@@ -46,15 +46,14 @@ async function getAll() {
                     }
                 ]
             },
-            {
-                model: User,
-                attributes: ['user_id', 'name']
-            }
+            { 
+             model: User,
+             attributes: ["user_id", "name"] }
         ],
-        order: [['start_date', 'ASC']]
+      order: [['start_date', 'ASC']]
     });
     return appointments;
-}
+} 
 
 
 // conseguir un appointment concreto

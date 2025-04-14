@@ -1,14 +1,33 @@
-header 
-	nav
-		div 
-			ul 
-				li 
-					a(href="/") Home 
-				li 
-					a(href="/appointments") Solicitudes
-		div
-			ul
-				li 
-					a(href="/login") Login
-				li
-					a(href="/register") Regístrate 
+header
+  nav
+    ul
+      li
+        a(href="/") HOME
+      if !user
+        li
+          a(href="/register") REGÍSTRATE
+        li
+          a(href="/login") LOGIN 
+      else
+        if user.role === 'client'
+          li
+            a(href="/appointments") TODAS LAS SOLICITUDES
+          li
+            a(href="/appointments/create") CREAR UNA SOLICITUD
+          li
+            a(href="/appointments/mine") MIS SOLICITUDES
+          li
+            a(href="/user/profile/edit") MODIFICAR PERFIL
+          li
+            a(href="/logout") LOGOUT
+        else if user.role === 'caretaker'
+          li
+            a(href="/appointments") TODAS LAS SOLICITUDES
+          li
+            a(href="/appointments/accepted") MIS SOLICITUDES ACEPTADAS
+          li
+            a(href="/user/profile/edit") MODIFICAR PERFIL
+          li
+            a(href="/logout") LOGOUT
+        
+
