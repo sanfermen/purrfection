@@ -58,7 +58,7 @@ async function getAll() {
 async function getMine(user_id ){
     const appointments = await Appointment.findAll({
         where: {
-            user_id:user_id
+            user_id: user_id
             }
         ,
         include: [
@@ -78,6 +78,7 @@ async function getMine(user_id ){
         ],
         order: [['start_date', 'ASC']]
     });
+	return appointments;
 }
 
 
