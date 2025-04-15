@@ -11,7 +11,6 @@ Cuelga tu anuncio y encuentra purrfesionales que se adapten a tus peticiones.
 - [Dalila Cabrera](https://github.com/crdalila)
 - [Sandra Fernández](https://github.com/sanfermen)
 - [Cecilia Scaroni](https://github.com/Ceci222/)
-- [Iker del Hierro](https://github.com/ikerdelfe)
 
 Imagen descriptiva del equipo técnico durante este proyecto:
 ![alt text](https://i.imgflip.com/3u04h5.jpg?a484368)
